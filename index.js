@@ -4,8 +4,8 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const ObjectId = require("mongodb").ObjectID;
 require('dotenv').config()
-const port = process.env.PORT || 5000
-
+// const port = process.env.PORT || 8080
+const port = 8080
 const app = express()
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,7 +17,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.m8cui.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const blogCollection = client.db(`${process.env.DB_USER}`).collection("blogs");
+  const blogCollection = client.db(`${process.env.DB_NAME}`).collection("blogs");
 
 
 
